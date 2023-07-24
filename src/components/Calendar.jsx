@@ -8,18 +8,19 @@ const Calendar = (props) => {
 
   const [currentDay, setCurrentDay] = useState(new Date());
 
-
   const changeCurrentDay = (day) => {
     setCurrentDay(new Date(day.year, day.month, day.number));
-    props.gettingDays(day)
+    props.gettingDays(day);
   };
 
-  const nextDay = () => {
-    setCurrentDay((prevDay) => new Date(prevDay.setDate(prevDay.getDate() + 1)));
+  // This Sets The Next Month and Date to 1
+  const nextMonth = () => {
+    setCurrentDay((prevDay) => new Date(prevDay.getFullYear(), prevDay.getMonth() + 1, 1));
   };
 
-  const previousDay = () => {
-    setCurrentDay((prevDay) => new Date(prevDay.setDate(prevDay.getDate() - 1)));
+  // This Sets The Previous Month and Date to 1
+  const previousMonth = () => {
+    setCurrentDay((prevDay) => new Date(prevDay.getFullYear(), prevDay.getMonth() - 1, 1));
   };
 
   return (
@@ -28,12 +29,12 @@ const Calendar = (props) => {
         <div className="calendar border border-3">
           <div className="calendar-header">
             <div className="d-flex justify-content-between align-items-center w-100">
-              <div type="button" className='' onClick={previousDay}>
+              <div type="button" className="" onClick={previousMonth}>
                 <i className="fa fa-angle-left fw-bold fs-4"></i>
                 <i className="fa fa-angle-left fw-bold fs-4"></i>
               </div>
-              <p className='lead p-0 m-0'>{`${months[currentDay.getMonth()]} ${currentDay.getFullYear()}`}</p>
-              <div type="button" className='' onClick={nextDay}>
+              <p className="lead p-0 m-0">{`${months[currentDay.getMonth()]} ${currentDay.getFullYear()}`}</p>
+              <div type="button" className="" onClick={nextMonth}>
                 <i class="fa fa-angle-right fw-bold fs-4"></i>
                 <i class="fa fa-angle-right fw-bold fs-4"></i>
               </div>
@@ -56,3 +57,5 @@ const Calendar = (props) => {
 };
 
 export default Calendar;
+
+

@@ -52,10 +52,21 @@ function Hotels(props) {
 
 
   // setting check-in date
-  const gettingCheckInDate = ({ date }) => setCheckIn(date)
+  const gettingCheckInDate = ({ date }) => {
+    if (date > checkOut) {
+      return alert("Check In Date must be earlier or equal to the Check Out date.")
+    }
+    setCheckIn(date)
+
+  }
 
   // setting check-out date
-  const gettingCheckOutDate = ({ date }) => setCheckOut(date)
+  const gettingCheckOutDate = ({ date }) => {
+    if (date < checkIn) {
+      return alert("Check In Date must be earlier or equal to the Check Out date.")
+    }
+    setCheckOut(date)
+  }
 
   const formatDate = (date) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"

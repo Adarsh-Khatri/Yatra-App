@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from './Navbar'
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
+import { Toaster } from 'react-hot-toast';
 
 
 export default class MainComponent extends Component {
@@ -9,6 +10,7 @@ export default class MainComponent extends Component {
   render() {
     return (
       <>
+        <Toaster />
         <div className="container-fluid">
           <div className="row">
             <Navbar />

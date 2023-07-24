@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Passengers from './Passengers';
 import Calendar from './Calendar';
 import { connect } from 'react-redux';
+import toast from 'react-hot-toast';
 
 
 function Flights(props) {
@@ -47,9 +48,17 @@ function Flights(props) {
 
   }
 
-  const gettingDeptDays = ({ date }) => setDeptDate(date)
+  const gettingDeptDays = ({ date }) => {
+    if (date > returnDate) {
+      return alert("Departure date must be earlier or equal to the return date.")
+    }
+    setDeptDate(date)
+  }
 
   const gettingReturnDays = ({ date }) => {
+    if (date < deptDate) {
+      return alert("Departure date must be earlier or equal to the return date.")
+    }
     setReturnDate(date)
     setTicket('Return')
   }
